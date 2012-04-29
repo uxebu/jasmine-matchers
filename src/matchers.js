@@ -52,7 +52,12 @@ beforeEach(function() {
     },
 
     toHaveBeenCalledXTimes: function(count) {
-      return this.actual.callCount == count;
+      var callCount = this.actual.callCount;
+      var not = this.isNot ? "NOT " : "";
+      this.message = function() {
+        return 'Expected spy "' + this.actual.identity + '" ' + not + ' to have been called ' + count + ' times, but was ' + callCount + '.';
+      };
+      return callCount == count;
     }
   })
 });
