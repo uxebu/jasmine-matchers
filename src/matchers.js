@@ -58,6 +58,17 @@ beforeEach(function() {
         return 'Expected spy "' + this.actual.identity + '" ' + not + ' to have been called ' + count + ' times, but was ' + callCount + '.';
       };
       return callCount == count;
+    },
+
+    toContainOnce: function(value) {
+      var actual = this.actual;
+      var containsOnce = false;
+      if (actual) {
+        var firstFoundAt = actual.indexOf(value);
+        containsOnce = firstFoundAt!=-1 && firstFoundAt == actual.lastIndexOf(value);
+      }
+      return containsOnce;
     }
+
   })
 });
