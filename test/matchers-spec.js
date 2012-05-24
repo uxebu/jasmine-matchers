@@ -152,4 +152,78 @@ require([
 
   });
 
+  describe('toEndWith', function() {
+
+    describe('matches', function() {
+      it('should work for string', function() {
+        expect('abc').toEndWith('c');
+      });
+      it('should work for equal string', function() {
+        expect('abc').toEndWith('abc');
+      });
+    });
+
+    describe('non-matches', function() {
+      it('should work for string', function() {
+        expect('abc').not.toEndWith('d');
+      });
+      it('should work for equal string', function() {
+        expect('abc').not.toEndWith('abz');
+      });
+    });
+
+  });
+
+  describe('toEachEndWith', function() {
+
+    describe('matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).toEachEndWith('e');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'zwee', 'three']).toEachEndWith('e');
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).not.toEachEndWith('o');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'zwei', 'three']).not.toEachEndWith('e');
+      });
+
+    });
+
+  });
+
+  describe('toSomeEndWith', function() {
+
+    describe('matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).toSomeEndWith('e');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'zwee', 'three']).toSomeEndWith('ee');
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).not.toSomeEndWith('o');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'zwei', 'three']).not.toSomeEndWith('a');
+      });
+
+    });
+
+  });
+
 });

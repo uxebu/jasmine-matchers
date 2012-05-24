@@ -68,7 +68,29 @@ beforeEach(function() {
         containsOnce = firstFoundAt!=-1 && firstFoundAt == actual.lastIndexOf(value);
       }
       return containsOnce;
+    },
+
+    toEndWith: function(value) {
+      return endsWith(this.actual, value);
+    },
+
+    toEachEndWith: function(searchString) {
+      var arrayOfStrings = this.actual;
+      return arrayOfStrings.every(function(oneValue) {
+        return endsWith(oneValue, searchString)
+      });
+    },
+
+    toSomeEndWith: function(searchString) {
+      var arrayOfStrings = this.actual;
+      return arrayOfStrings.some(function(oneValue) {
+        return endsWith(oneValue, searchString)
+      });
     }
 
   })
 });
+
+function endsWith(haystack, needle){
+  return haystack.substr(-needle.length) == needle;
+}
