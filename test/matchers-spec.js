@@ -29,22 +29,22 @@ require([
 
   });
 
-  describe('toBeANumber', function() {
+  describe('toBeNumber', function() {
 
     describe('matches', function() {
       it('should pass for 0', function() {
-        expect(0).toBeANumber();
+        expect(0).toBeNumber();
       });
       it('should pass for 2.1', function() {
-        expect(2.1).toBeANumber();
+        expect(2.1).toBeNumber();
       });
     });
     describe('non matches', function() {
       it('should pass for "x"', function() {
-        expect('x').not.toBeANumber();
+        expect('x').not.toBeNumber();
       });
       it('should pass for function(){}', function() {
-        expect(function() {}).not.toBeANumber();
+        expect(function() {}).not.toBeNumber();
       });
     });
 

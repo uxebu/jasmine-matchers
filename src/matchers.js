@@ -4,7 +4,7 @@ beforeEach(function() {
       return {}.toString.call(this.actual) === '[object Array]';
     },
 
-    toBeANumber: function() {
+    toBeNumber: function() {
       return typeof this.actual == 'number';
     },
 
