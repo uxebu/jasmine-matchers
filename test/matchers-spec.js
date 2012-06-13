@@ -29,6 +29,27 @@ require([
 
   });
 
+  describe('toBeANumber', function() {
+
+    describe('matches', function() {
+      it('should pass for 0', function() {
+        expect(0).toBeANumber();
+      });
+      it('should pass for 2.1', function() {
+        expect(2.1).toBeANumber();
+      });
+    });
+    describe('non matches', function() {
+      it('should pass for "x"', function() {
+        expect('x').not.toBeANumber();
+      });
+      it('should pass for function(){}', function() {
+        expect(function() {}).not.toBeANumber();
+      });
+    });
+
+  });
+
   describe('toBeInstanceOf', function() {
 
     describe('matches', function() {

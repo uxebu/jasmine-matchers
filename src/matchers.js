@@ -4,6 +4,10 @@ beforeEach(function() {
       return {}.toString.call(this.actual) === '[object Array]';
     },
 
+    toBeANumber: function() {
+      return typeof this.actual == 'number';
+    },
+
     toBeInstanceOf: function(Constructor) {
       return this.actual instanceof Constructor;
     },
