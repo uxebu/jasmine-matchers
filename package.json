@@ -12,6 +12,7 @@
     "name": "Wolfram Kriesing",
     "email": "wk@uxebu.com"
   }],
+  "main": "./src/matchers.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:uxebu/jasmine-matchers.git"
