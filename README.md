@@ -15,7 +15,7 @@ and more.
 Either you use in your browser jasmine test runner by adding it after the script-tag `jasmine.js`:
 
 ~~~html
-<script src="matchers.js"></src>
+<script src="matchers.js"></script>
 ~~~
 
 Or when using [jasmine-node](https://github.com/mhevery/jasmine-node) you can simply install the matchers via:
