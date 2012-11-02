@@ -1,24 +1,33 @@
 {
-  "author": "David Aurelio",
+  "author": "uxebu Inc.",
   "name": "jasmine-matchers",
   "description": "Extends the matchers jasmine provides.",
   "private": false,
   "version": "0.1.0",
   "homepage": "https://github.com/uxebu/jasmine-matchers/",
-  "maintainers" : [{
+  "maintainers": [{
     "name": "David Aurelio",
     "email": "da@uxebu.com"
-  }, {
+  },
+  {
     "name": "Wolfram Kriesing",
     "email": "wk@uxebu.com"
+  },
+  {
+    "name": "Tobias von Klipstein",
+    "email": "tk@uxebu.com"
   }],
   "main": "./src/matchers.js",
+  "scripts": {
+    "test": "jasmine-node --runWithRequireJs test"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:uxebu/jasmine-matchers.git"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "jasmine-node": "~1.0.26",
+    "requirejs": "~2.1.1"
   }
 }

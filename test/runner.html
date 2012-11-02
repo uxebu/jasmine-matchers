@@ -2,20 +2,18 @@
   "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Jasmine Matchers - Spec Runner</title>
-  <link rel="stylesheet" type="text/css" href="../lib/jasmine-core/jasmine.css">
-  <script type="text/javascript">
-    var require = {
-      paths: {
-        order: '../lib/requirejs/order'
-      }
-    };
-  </script>
-  <script type="text/javascript" src="../lib/requirejs/require.js"></script>
+  <link rel="stylesheet" type="text/css" href="../node_modules/jasmine-node/node_modules/jasmine-reporters/ext/jasmine.css">
+  <script type="text/javascript" src="../node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js"></script>
+  <script type="text/javascript" src="../node_modules/jasmine-node/node_modules/jasmine-reporters/ext/jasmine-html.js"></script>
+  <script type="text/javascript" src="../node_modules/requirejs/require.js"></script>
   <script type="text/javascript">
   require([
     './matchers-spec'
-  ]);
+  ], function() {
+    require(['./runner'])
+  });
   </script>
 </head>
 

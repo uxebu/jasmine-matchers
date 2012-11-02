@@ -1,6 +1,4 @@
-require([
-  './runner.js'
-], function() {
+require(['../src/matchers'], function() {
 
   describe('toBeArray', function() {
 
