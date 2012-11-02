@@ -27,7 +27,7 @@ npm install jasmine-matchers
 And make them available in your spec-file:
 
 ~~~js
-require('jasmine-node');
+require('jasmine-matchers');
 describe(...);
 
 // or via requirejs (assuming your specs are within PROJECT_ROOT/test):
