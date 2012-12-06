@@ -108,9 +108,8 @@ beforeEach(function() {
       return arrayOfStrings.some(function(oneValue) {
         return startsWith(oneValue, searchString)
       });
-    },
-
-  })
+    }
+  });
 });
 
 function endsWith(haystack, needle) {
