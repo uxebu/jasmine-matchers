@@ -90,11 +90,32 @@ beforeEach(function() {
       return arrayOfStrings.some(function(oneValue) {
         return endsWith(oneValue, searchString)
       });
-    }
+    },
 
-  })
+    toStartWith: function(value) {
+      return startsWith(this.actual, value);
+    },
+
+    toEachStartWith: function(searchString) {
+      var arrayOfStrings = this.actual;
+      return arrayOfStrings.every(function(oneValue) {
+        return startsWith(oneValue, searchString)
+      });
+    },
+
+    toSomeStartWith: function(searchString) {
+      var arrayOfStrings = this.actual;
+      return arrayOfStrings.some(function(oneValue) {
+        return startsWith(oneValue, searchString)
+      });
+    }
+  });
 });
 
-function endsWith(haystack, needle){
+function endsWith(haystack, needle) {
   return haystack.substr(-needle.length) == needle;
+}
+
+function startsWith(haystack, needle) {
+  return haystack.substr(0, needle.length) == needle;
 }

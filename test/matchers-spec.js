@@ -1,6 +1,4 @@
-require([
-  './runner.js'
-], function() {
+require(['../src/matchers'], function() {
 
   describe('toBeArray', function() {
 
@@ -241,6 +239,80 @@ require([
       });
       it('should work for array with multiple elements', function() {
         expect(['one', 'zwei', 'three']).not.toSomeEndWith('a');
+      });
+
+    });
+
+  });
+
+  describe('toStartWith', function() {
+
+    describe('matches', function() {
+      it('should work for string', function() {
+        expect('abc').toStartWith('a');
+      });
+      it('should work for equal string', function() {
+        expect('abc').toStartWith('abc');
+      });
+    });
+
+    describe('non-matches', function() {
+      it('should work for string', function() {
+        expect('abc').not.toStartWith('d');
+      });
+      it('should work for equal string', function() {
+        expect('abc').not.toStartWith('abz');
+      });
+    });
+
+  });
+
+  describe('toEachStartWith', function() {
+
+    describe('matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).toEachStartWith('o');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'onetwo', 'onethree']).toEachStartWith('o');
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).not.toEachStartWith('e');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'two', 'onethree']).not.toEachStartWith('o');
+      });
+
+    });
+
+  });
+
+  describe('toSomeStartWith', function() {
+
+    describe('matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).toSomeStartWith('o');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'onetwo', 'three']).toSomeStartWith('one');
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should work for array with one element', function() {
+        expect(['one']).not.toSomeStartWith('e');
+      });
+      it('should work for array with multiple elements', function() {
+        expect(['one', 'two', 'onethree']).not.toSomeStartWith('a');
       });
 
     });
