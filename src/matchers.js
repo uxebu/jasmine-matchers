@@ -9,6 +9,23 @@ beforeEach(function() {
       return {}.toString.call(this.actual) === '[object Array]';
     },
 
+    toBeCloseToOneOf: function(values, isCloseToFunction) {
+      var isCloseTo = false;
+      var actual = this.actual;
+      for (var i = 0, l = values.length; i < l; i++) {
+        if (isCloseToFunction(actual, values[i])) {
+          isCloseTo = true;
+          break;
+        }
+      }
+      var not = this.isNot ? " NOT" : "";
+      var isCloseString = stringifyFunctionName(isCloseToFunction);
+      this.message = function() {
+        return 'Expected ' + actual + not + ' to be `' + isCloseString + '` of one of ' + JSON.stringify(values) + '.';
+      };
+      return isCloseTo;
+    },
+
     toBeInstanceOf: function(Constructor) {
       return this.actual instanceof Constructor;
     },
@@ -144,4 +161,26 @@ function endsWith(haystack, needle) {
 
 function startsWith(haystack, needle) {
   return haystack.substr(0, needle.length) == needle;
+}
+
+function stringifyFunctionName(func) {
+  var name = func.name;
+  if (!name) {
+    name = func.toSource()
+      .replace(/^function\s/, '') // remove leading 'function '
+      .match(/^.[^(]]+/)[0]; // remove everything after the function name.
+  }
+  return fromCamelCaseToReadable(name);
+}
+
+function fromCamelCaseToReadable(camelCaseString) {
+  var characters = camelCaseString.split('');
+  return characters.map(addSpaceBeforeUpperCaseLetter).join('').toLowerCase();
+}
+
+function addSpaceBeforeUpperCaseLetter(character){
+  if (character.toLowerCase() != character) {
+    character = ' ' + character;
+  }
+  return character;
 }

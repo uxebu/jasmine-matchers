@@ -374,4 +374,61 @@ require(['../src/matchers'], function() {
 
   });
 
+  describe('toBeCloseToOneOf', function() {
+
+    function oneDigitOff(actual, expected) {
+      var actualInt = parseInt(actual, 10);
+      return actualInt-1 <= expected && actualInt+1 >= expected;
+    }
+
+    function tenPercentOff(actual, expected) {
+      return expected * 0.9 <= actual && expected * 1.1 >= actual;
+    }
+
+    function oneDigitOrTenPercentOff(actual, expected) {
+      return oneDigitOff(actual, expected) || tenPercentOff(actual, expected);
+    }
+
+    function twoDecimalsOff(actual, expected) {
+      var lower = ((expected * 100) - 2 ) / 100;
+      var upper = ((expected * 100) + 2 ) / 100;
+      return lower <= actual && upper >= actual;
+    }
+
+    describe('matches', function() {
+
+      it('should say 7 is close to one of [8, 9]', function() {
+        expect(7).toBeCloseToOneOf([8, 9], oneDigitOff);
+      });
+      it('should say 2 is 10% off of one of [2.2, 1.0]', function() {
+        expect(2).toBeCloseToOneOf([2.2, 1.0], tenPercentOff);
+      });
+      it('should say 7 is close to one of [8, 9]', function() {
+        expect(7).toBeCloseToOneOf([8, 9], oneDigitOrTenPercentOff);
+      });
+      it('should say 1.345 two decimals off of [1.325, 1.365]', function() {
+        expect(1.345).toBeCloseToOneOf([1.325, 1.365], twoDecimalsOff);
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should say 7 is NOT one off of [9, 10, 11]', function() {
+        expect(7).not.toBeCloseToOneOf([9, 10, 11], oneDigitOff);
+      });
+      it('should say 1 is close to one of [8, 9]', function() {
+        expect(1).not.toBeCloseToOneOf([8, 9], oneDigitOrTenPercentOff);
+      });
+      it('should say 1.9 is NOT 10% off of one of [2.2, 1.0]', function() {
+        expect(1.9).not.toBeCloseToOneOf([2.2, 1.0], tenPercentOff);
+      });
+      it('should say 1.345 two decimals off of [1.325, 1.365]', function() {
+        expect(1.304).not.toBeCloseToOneOf([1.325, 1.365], twoDecimalsOff);
+      });
+
+    });
+
+  });
+
 });
