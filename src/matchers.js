@@ -14,7 +14,7 @@ beforeEach(function() {
       var isCloseTo = values.some(function(oneValue) {
         return isCloseToFunction(actual, oneValue)
       });
-      
+
       var not = this.isNot ? " NOT" : "";
       var isCloseString = stringifyFunctionName(isCloseToFunction);
       this.message = function() {
