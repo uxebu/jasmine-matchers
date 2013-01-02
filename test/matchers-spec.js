@@ -348,4 +348,30 @@ require(['../src/matchers'], function() {
 
   });
 
+  describe('toBeOneOf', function() {
+
+    describe('matches', function() {
+
+      it('should find "a" in ["a", "b"]', function() {
+        expect('a').toBeOneOf(['a', 'b']);
+      });
+      it('should find "uxebu" in ["company", "uxebu"]', function() {
+        expect('uxebu').toBeOneOf(['company', 'uxebu']);
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should not find "" in [" ", "0"]', function() {
+        expect('').not.toBeOneOf([' ', '0']);
+      });
+      it('should not find "a" in ["b", "c"]', function() {
+        expect('a').not.toBeOneOf(['b', 'c']);
+      });
+
+    });
+
+  });
+
 });

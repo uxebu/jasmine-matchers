@@ -22,6 +22,10 @@ beforeEach(function() {
       return typeof this.actual === type;
     },
 
+    toBeOneOf: function(values) {
+      return values.indexOf(this.actual) > -1;
+    },
+
     toBeInRange: function(a, b) {
       return this.actual <= b && this.actual >= a;
     },
