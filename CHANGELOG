@@ -1,0 +1,4 @@
+v0.1.2
+-------------------
+
+* Add toBeInRange(), where the value has to be between two numbers incl. the numbers themselves.

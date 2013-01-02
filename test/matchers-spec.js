@@ -319,4 +319,33 @@ require(['../src/matchers'], function() {
 
   });
 
+  describe('toBeInRange', function() {
+
+    describe('matches', function() {
+
+      it('should find 0 in 0..1', function() {
+        expect(0).toBeInRange(0, 1);
+      });
+      it('should find 1 in 0..2', function() {
+        expect(1).toBeInRange(0, 2);
+      });
+      it('should find 1.5 in 1..2', function() {
+        expect(1.5).toBeInRange(1, 2);
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should not find 0 in 1..2', function() {
+        expect(0).not.toBeInRange(1, 2);
+      });
+      it('should not find 100 in 33..55', function() {
+        expect(100).not.toBeInRange(33, 55);
+      });
+
+    });
+
+  });
+
 });

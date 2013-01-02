@@ -22,6 +22,10 @@ beforeEach(function() {
       return typeof this.actual === type;
     },
 
+    toBeInRange: function(a, b) {
+      return this.actual <= b && this.actual >= a;
+    },
+
     toHaveLength: function(length) {
       return this.actual.length === length;
     },
