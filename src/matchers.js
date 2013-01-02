@@ -1,21 +1,30 @@
 beforeEach(function() {
   this.addMatchers({
+
+    //
+    // toBe*
+    //
+
     toBeArray: function() {
       return {}.toString.call(this.actual) === '[object Array]';
-    },
-
-    toBeNumber: function() {
-      return typeof this.actual == 'number';
     },
 
     toBeInstanceOf: function(Constructor) {
       return this.actual instanceof Constructor;
     },
 
+    toBeInRange: function(a, b) {
+      return this.actual <= b && this.actual >= a;
+    },
+
     toBeNan: function() { // needs to be spelled 'Nan' due to jasmine conventions
       var actual = this.actual;
       // NaN is the only value that is not strictly equal to itself
       return actual !== actual;
+    },
+
+    toBeNumber: function() {
+      return typeof this.actual == 'number';
     },
 
     toBeOfType: function(type) {
@@ -26,22 +35,21 @@ beforeEach(function() {
       return values.indexOf(this.actual) > -1;
     },
 
-    toBeInRange: function(a, b) {
-      return this.actual <= b && this.actual >= a;
+    //
+    // toHave*
+    //
+
+    toHaveBeenCalledXTimes: function(count) {
+      var callCount = this.actual.callCount;
+      var not = this.isNot ? "NOT " : "";
+      this.message = function() {
+        return 'Expected spy "' + this.actual.identity + '" ' + not + ' to have been called ' + count + ' times, but was ' + callCount + '.';
+      };
+      return callCount == count;
     },
 
     toHaveLength: function(length) {
       return this.actual.length === length;
-    },
-
-    toHaveProperties: function(name0, name1, name2) {
-      var actual = this.actual;
-      for (var i = 0, len = arguments.length; i < len; i += 1) {
-        if (!(arguments[i] in actual)) {
-          return false;
-        }
-      }
-      return true;
     },
 
     toHaveOwnProperties: function(name0, name1, name2) {
@@ -54,33 +62,19 @@ beforeEach(function() {
       return true;
     },
 
-    toThrowInstanceOf: function(klass) {
-      try {
-        this.actual();
-      } catch (e) {
-        return e instanceof klass;
-      }
-      return false;
-    },
-
-    toHaveBeenCalledXTimes: function(count) {
-      var callCount = this.actual.callCount;
-      var not = this.isNot ? "NOT " : "";
-      this.message = function() {
-        return 'Expected spy "' + this.actual.identity + '" ' + not + ' to have been called ' + count + ' times, but was ' + callCount + '.';
-      };
-      return callCount == count;
-    },
-
-    toContainOnce: function(value) {
+    toHaveProperties: function(name0, name1, name2) {
       var actual = this.actual;
-      var containsOnce = false;
-      if (actual) {
-        var firstFoundAt = actual.indexOf(value);
-        containsOnce = firstFoundAt!=-1 && firstFoundAt == actual.lastIndexOf(value);
+      for (var i = 0, len = arguments.length; i < len; i += 1) {
+        if (!(arguments[i] in actual)) {
+          return false;
+        }
       }
-      return containsOnce;
+      return true;
     },
+
+    //
+    // start/endWith
+    //
 
     toEndWith: function(value) {
       return endsWith(this.actual, value);
@@ -116,7 +110,31 @@ beforeEach(function() {
       return arrayOfStrings.some(function(oneValue) {
         return startsWith(oneValue, searchString)
       });
+    },
+
+    //
+    // others
+    //
+
+    toContainOnce: function(value) {
+      var actual = this.actual;
+      var containsOnce = false;
+      if (actual) {
+        var firstFoundAt = actual.indexOf(value);
+        containsOnce = firstFoundAt!=-1 && firstFoundAt == actual.lastIndexOf(value);
+      }
+      return containsOnce;
+    },
+
+    toThrowInstanceOf: function(klass) {
+      try {
+        this.actual();
+      } catch (e) {
+        return e instanceof klass;
+      }
+      return false;
     }
+
   });
 });
 
