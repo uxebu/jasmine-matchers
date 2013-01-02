@@ -10,14 +10,11 @@ beforeEach(function() {
     },
 
     toBeCloseToOneOf: function(values, isCloseToFunction) {
-      var isCloseTo = false;
       var actual = this.actual;
-      for (var i = 0, l = values.length; i < l; i++) {
-        if (isCloseToFunction(actual, values[i])) {
-          isCloseTo = true;
-          break;
-        }
-      }
+      var isCloseTo = values.some(function(oneValue) {
+        return isCloseToFunction(actual, oneValue)
+      });
+      
       var not = this.isNot ? " NOT" : "";
       var isCloseString = stringifyFunctionName(isCloseToFunction);
       this.message = function() {
