@@ -40,3 +40,9 @@ require(['../node_modules/src/matchers.js'], function() {
 
 This used to be our (uxebu's) collection of matchers that moved from project
 to project, got extended here and there, let's share it.
+
+TODO
+- split up in multiple files, to clean up code a bit
+- write grunt file to
+  - integrate with travis
+  - build one file, for easier inclusion
