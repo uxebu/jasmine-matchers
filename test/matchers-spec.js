@@ -78,6 +78,12 @@ require(['../src/matchers'], function() {
       });
     });
 
+    describe('non-matches', function() {
+      it('should work for `number`', function() {
+        expect('a').not.toBeOfType('number');
+      });
+    });
+
   });
 
   describe('toHaveLength', function() {
