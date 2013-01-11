@@ -160,6 +160,10 @@ beforeEach(function() {
       } else {
         return false;
       }
+    },
+
+    toBeEmpty: function(){
+      return this.actual.length === 0;
     }
 
   });
