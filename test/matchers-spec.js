@@ -437,4 +437,26 @@ require(['../src/matchers'], function() {
 
   });
 
+  describe('toBeTrue', function(){
+    describe('matches', function(){
+      it('should pass for true', function(){
+        expect(true).toBeTrue();
+      });
+      it('should pass for char', function(){
+        expect('x').toBeTrue();
+      });
+      it('should pass for int', function(){
+        expect(1).toBeTrue();
+      });
+    });
+    describe('non-matches', function(){
+      it('should say false is NOT a truthy value', function(){
+        expect(false).not.toBeTrue();
+      });
+      it('should say 0 is NOT a thruthy value', function(){
+        expect(0).not.toBeTrue();
+      });
+    });
+  });
+
 });

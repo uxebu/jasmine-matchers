@@ -147,6 +147,19 @@ beforeEach(function() {
         return e instanceof klass;
       }
       return false;
+    },
+
+    toBeTrue: function(){
+      var not = this.isNot ? " NOT" : "";
+      var actual = this.actual;
+      this.message = function() {
+        return 'Expected ' + actual + not + ' to be a thruthy value.';
+      }
+      if(!!this.actual){
+        return true;
+      } else {
+        return false;
+      }
     }
 
   });
