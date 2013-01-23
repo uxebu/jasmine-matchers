@@ -335,6 +335,9 @@ require(['../src/matchers'], function() {
       it('should work for three parameters', function() {
         expect('one').toEitherStartWith('two', 'one', 'three');
       });
+      it('should work for multiple matches', function() {
+        expect('one').toEitherStartWith('on', 'one', 'o');
+      });
 
     });
 
