@@ -325,18 +325,18 @@ require(['../src/matchers'], function() {
 
   });
 
-  describe('toEitherStartWith', function() {
+  describe('toStartWithEither', function() {
 
     describe('matches', function() {
 
       it('should work for two parameters', function() {
-        expect('one').toEitherStartWith('two', 'one');
+        expect('one').toStartWithEither('two', 'one');
       });
       it('should work for three parameters', function() {
-        expect('one').toEitherStartWith('two', 'one', 'three');
+        expect('one').toStartWithEither('two', 'one', 'three');
       });
       it('should work for multiple matches', function() {
-        expect('one').toEitherStartWith('on', 'one', 'o');
+        expect('one').toStartWithEither('on', 'one', 'o');
       });
 
     });
@@ -344,10 +344,10 @@ require(['../src/matchers'], function() {
     describe('non-matches', function() {
 
       it('should work for two elements', function() {
-        expect('one').not.toEitherStartWith('e', 'a');
+        expect('one').not.toStartWithEither('e', 'a');
       });
       it('should work for three elements', function() {
-        expect('one').not.toEitherStartWith('ne', 'ones', 'two');
+        expect('one').not.toStartWithEither('ne', 'ones', 'two');
       });
 
     });

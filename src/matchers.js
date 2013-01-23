@@ -101,7 +101,7 @@ beforeEach(function() {
       });
     },
 
-    toEitherStartWith: function() {
+    toStartWithEither: function() {
       var args = [].slice.call(arguments);
       for (var i=0, l=args.length; i<l; i++) {
         if (startsWith(this.actual, args[i])) {

@@ -4,4 +4,4 @@ v0.1.2
 * Add toBeInRange(), where the value has to be between two numbers incl. the numbers themselves.
 * Added toBeOneOf(), where actual is checked against a set of expected values.
 * Added toBeCloseToOneOf()
-* Added toEitherStartWith()
+* Added toStartWithEither()
