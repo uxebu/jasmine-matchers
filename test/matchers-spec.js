@@ -325,6 +325,32 @@ require(['../src/matchers'], function() {
 
   });
 
+  describe('toEitherStartWith', function() {
+
+    describe('matches', function() {
+
+      it('should work for two parameters', function() {
+        expect('one').toEitherStartWith('two', 'one');
+      });
+      it('should work for three parameters', function() {
+        expect('one').toEitherStartWith('two', 'one', 'three');
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should work for two elements', function() {
+        expect('one').not.toEitherStartWith('e', 'a');
+      });
+      it('should work for three elements', function() {
+        expect('one').not.toEitherStartWith('ne', 'ones', 'two');
+      });
+
+    });
+
+  });
+
   describe('toBeInRange', function() {
 
     describe('matches', function() {
