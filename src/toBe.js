@@ -46,4 +46,28 @@ beforeEach(function() {
     }
 
   });
+
+  function stringifyFunctionName(func) {
+    var name = func.name;
+    if (!name) {
+      name = func.toSource()
+        .replace(/^function\s/, '') // remove leading 'function '
+        .match(/^.[^(]]+/)[0]; // remove everything after the function name.
+    }
+    return fromCamelCaseToReadable(name);
+  }
+
+  function fromCamelCaseToReadable(camelCaseString) {
+    var characters = camelCaseString.split('');
+    return characters.map(addSpaceBeforeUpperCaseLetter).join('').toLowerCase();
+  }
+
+  function addSpaceBeforeUpperCaseLetter(character){
+    if (character.toLowerCase() != character) {
+      character = ' ' + character;
+    }
+    return character;
+  }
+
+
 });
