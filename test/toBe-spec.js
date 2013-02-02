@@ -1,4 +1,4 @@
-define(function() {
+require([], function() {
 
   describe('toBeArray', function() {
 
