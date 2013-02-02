@@ -6,3 +6,4 @@ v0.1.2
 * Added toBeCloseToOneOf()
 * Added toStartWithEither()
 * separated all matchers+tests into reasonable files
+* provide a runner-dist.html which runs all tests against the built version

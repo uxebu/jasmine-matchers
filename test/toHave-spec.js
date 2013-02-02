@@ -1,4 +1,4 @@
-require(['./allMatchers'], function() {
+define(function() {
 
   describe('toHaveLength', function() {
 
