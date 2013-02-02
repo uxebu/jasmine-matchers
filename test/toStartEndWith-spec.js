@@ -26,11 +26,19 @@ require([], function() {
           expect(['1', '2'])
             .toStartWith('1');
         });
+        it('should work for array', function() {
+          expect([3, 4, 5])
+            .toStartWith([3, 4]);
+        });
       });
       describe('non-matches', function() {
         it('should work for string', function() {
           expect(['1', '2'])
             .not.toStartWith('3');
+        });
+        it('should work for array', function() {
+          expect([3, 4, 5])
+            .not.toStartWith([4, 5]);
         });
       });
     });

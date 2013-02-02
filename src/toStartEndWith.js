@@ -64,6 +64,11 @@ function endsWith(haystack, needle) {
 
 function startsWith(haystack, needle) {
   if (isArray(haystack)) {
+    if (isArray(needle)) {
+      return needle.every(function(val, idx) {
+        return val == haystack[idx];
+      });
+    }
     return haystack.indexOf(needle) == 0;
   } else {
     return haystack.substr(0, needle.length) == needle;
