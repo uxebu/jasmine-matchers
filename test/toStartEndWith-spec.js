@@ -22,9 +22,15 @@ require([], function() {
 
     describe('with array', function() {
       describe('matches', function() {
-        it('should work with "1"', function() {
+        it('should work for string', function() {
           expect(['1', '2'])
             .toStartWith('1');
+        });
+      });
+      describe('non-matches', function() {
+        it('should work for string', function() {
+          expect(['1', '2'])
+            .not.toStartWith('3');
         });
       });
     });
