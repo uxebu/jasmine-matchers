@@ -19,7 +19,7 @@
     "email": "tk@uxebu.com"
   }],
   "scripts": {
-    "test": "jasmine-node --runWithRequireJs test"
+    "test": "make build; jasmine-node --runWithRequireJs test"
   },
   "repository": {
     "type": "git",
