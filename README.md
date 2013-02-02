@@ -1,3 +1,5 @@
+Under MIT License
+
 # Overview
 
 This project contains a set of matchers for the jasmine test library
