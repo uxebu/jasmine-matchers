@@ -45,7 +45,7 @@ require(['../node_modules/dist/jasmine-matchers.js'], function() {
 npm install -g grunt-cli
 cd jasmine-matchers
 npm install
-# execute lint & tests (node)
+# execute lint & tests (node) & release
 grunt # or npm test
 # execute tests (node)
 grunt test
