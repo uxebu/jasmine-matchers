@@ -4,6 +4,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       options: {
+        indent: 2,
+        white: '',
         eqnull: true,
         browser: true,
         newcap: false,
