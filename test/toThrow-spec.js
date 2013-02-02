@@ -1,4 +1,4 @@
-require(['../src/matchers'], function() {
+require(['./allMatchers'], function() {
 
   describe('toThrowInstanceOf', function() {
 

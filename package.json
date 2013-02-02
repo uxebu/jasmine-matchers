@@ -3,9 +3,9 @@
   "name": "jasmine-matchers",
   "description": "Extends the matchers jasmine provides.",
   "private": false,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/uxebu/jasmine-matchers/",
-  "main": "src/matchers.js",
+  "main": "dist/matchers.js",
   "maintainers" : [{
     "name": "David Aurelio",
     "email": "da@uxebu.com"
