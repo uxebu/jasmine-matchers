@@ -38,12 +38,29 @@ require(['../node_modules/src/matchers.js'], function() {
 });
 ~~~
 
+# Development setup
+
+~~~ bash
+# https://github.com/gruntjs/grunt/wiki/Getting-started
+npm install -g grunt-cli
+cd jasmine-matchers
+npm install
+# execute lint & test
+grunt test # or npm test
+# execute lint
+grunt jshint
+# execute tests in phantomjs
+grunt test-phantom
+# make a release
+grunt release
+# start a server
+grunt server # visit http://localhost:8231/_spec_runner.html
+~~~
+
 # History
 
 This used to be our (uxebu's) collection of matchers that moved from project
 to project, got extended here and there, let's share it.
 
 TODO
-- write grunt file to
-  - integrate with travis
   - build one file, for easier inclusion
