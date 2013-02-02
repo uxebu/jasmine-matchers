@@ -1,7 +1,7 @@
 beforeEach(function() {
   this.addMatchers({
 
-   toThrowInstanceOf: function(klass) {
+    toThrowInstanceOf: function(klass) {
       try {
         this.actual();
       } catch (e) {
