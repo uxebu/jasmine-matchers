@@ -19,7 +19,7 @@
     "email": "tk@uxebu.com"
   }],
   "scripts": {
-    "test": "make build; jasmine-node --runWithRequireJs test"
+    "test": "jasmine-node --requireJsSetup test/require-config.js test"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "jasmine-node": "~1.0.26",
+    "jasmine-node": "~1.1.0",
     "requirejs": "~2.1.1"
   }
 }

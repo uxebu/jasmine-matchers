@@ -1,4 +1,4 @@
-require([], function() {
+require(['src/toStartEndWith'], function() {
 
   describe('toEndWith', function() {
 

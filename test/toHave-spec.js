@@ -1,4 +1,4 @@
-require([], function() {
+require(['src/toHave'], function() {
 
   describe('toHaveLength', function() {
 

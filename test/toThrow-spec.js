@@ -1,4 +1,4 @@
-require([], function() {
+require(['src/toThrow'], function() {
 
   describe('toThrowInstanceOf', function() {
 

@@ -1,4 +1,4 @@
-require([], function() {
+require(['src/toBe'], function() {
 
   describe('toBeArray', function() {
 

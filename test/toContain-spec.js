@@ -1,4 +1,4 @@
-require([], function() {
+require(['src/toContain'], function() {
 
   describe('toContainOnce', function() {
 
