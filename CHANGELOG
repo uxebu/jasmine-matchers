@@ -8,3 +8,4 @@ v0.1.2
 * separated all matchers+tests into reasonable files
 * provide a runner-dist.html which runs all tests against the built version
 * added toThrowStartsWith()
+* added toStart/EndWith work with arrays now too
