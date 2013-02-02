@@ -4,7 +4,7 @@ define(function() {
   var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 10000;
 
-  var trivialReporter = new jasmine.TrivialReporter;
+  var trivialReporter = new jasmine.TrivialReporter();
   jasmineEnv.addReporter(trivialReporter);
 
   jasmineEnv.specFilter = function(spec) {

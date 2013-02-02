@@ -15,9 +15,9 @@ beforeEach(function() {
     },
 
     toHaveOwnProperties: function(name0, name1, name2) {
-      var actual = this.actual, hasOwnProperty = {}.hasOwnProperty;
+      var actual = this.actual, doesHaveOwnProperty = {}.hasOwnProperty;
       for (var i = 0, len = arguments.length; i < len; i += 1) {
-        if (!hasOwnProperty.call(actual, arguments[i])) {
+        if (!doesHaveOwnProperty.call(actual, arguments[i])) {
           return false;
         }
       }

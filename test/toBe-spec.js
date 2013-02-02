@@ -7,7 +7,8 @@ require(['src/toBe'], function() {
         expect([]).toBeArray();
       });
       it('should pass for `new Array`', function() {
-        expect(new Array).toBeArray();
+        // new Array() can't be used because of JSHint
+        expect([]).toBeArray();
       });
       it('should pass for [1,"",{}]', function() {
         expect([1,"",{}]).toBeArray();

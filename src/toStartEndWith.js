@@ -12,7 +12,7 @@ beforeEach(function() {
     toEachEndWith: function(searchString) {
       var arrayOfStrings = this.actual;
       return arrayOfStrings.every(function(oneValue) {
-        return endsWith(oneValue, searchString)
+        return endsWith(oneValue, searchString);
       });
     },
 
@@ -29,7 +29,7 @@ beforeEach(function() {
     toSomeEndWith: function(searchString) {
       var arrayOfStrings = this.actual;
       return arrayOfStrings.some(function(oneValue) {
-        return endsWith(oneValue, searchString)
+        return endsWith(oneValue, searchString);
       });
     },
 
@@ -40,14 +40,14 @@ beforeEach(function() {
     toEachStartWith: function(searchString) {
       var arrayOfStrings = this.actual;
       return arrayOfStrings.every(function(oneValue) {
-        return startsWith(oneValue, searchString)
+        return startsWith(oneValue, searchString);
       });
     },
 
     toSomeStartWith: function(searchString) {
       var arrayOfStrings = this.actual;
       return arrayOfStrings.some(function(oneValue) {
-        return startsWith(oneValue, searchString)
+        return startsWith(oneValue, searchString);
       });
     }
 
@@ -98,7 +98,7 @@ function arrayStartsWith(haystack, needle) {
       return val == haystack[idx];
     });
   }
-  return haystack.indexOf(needle) == 0;
+  return haystack.indexOf(needle) === 0;
 }
 
 function stringifyFunctionName(func) {
@@ -106,7 +106,7 @@ function stringifyFunctionName(func) {
   if (!name) {
     name = func.toSource()
       .replace(/^function\s/, '') // remove leading 'function '
-      .match(/^.[^(]]+/)[0]; // remove everything after the function name.
+      .match(/^.[^(\]]+/)[0]; // remove everything after the function name.
   }
   return fromCamelCaseToReadable(name);
 }

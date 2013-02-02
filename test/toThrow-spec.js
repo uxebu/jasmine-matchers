@@ -4,7 +4,7 @@ require(['src/toThrow'], function() {
 
     describe('matches', function() {
       it('should work for `Error`', function() {
-        expect(function(){ throw new Error; })
+        expect(function(){ throw new Error(); })
           .toThrowInstanceOf(Error);
       });
     });

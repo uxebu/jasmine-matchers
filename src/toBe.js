@@ -8,7 +8,7 @@ beforeEach(function() {
     toBeCloseToOneOf: function(values, isCloseToFunction) {
       var actual = this.actual;
       var isCloseTo = values.some(function(oneValue) {
-        return isCloseToFunction(actual, oneValue)
+        return isCloseToFunction(actual, oneValue);
       });
 
       var not = this.isNot ? " NOT" : "";
@@ -53,7 +53,7 @@ function stringifyFunctionName(func) {
   if (!name) {
     name = func.toSource()
       .replace(/^function\s/, '') // remove leading 'function '
-      .match(/^.[^(]]+/)[0]; // remove everything after the function name.
+      .match(/^.[^(\]]+/)[0]; // remove everything after the function name.
   }
   return fromCamelCaseToReadable(name);
 }
