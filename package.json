@@ -5,7 +5,7 @@
   "private": false,
   "version": "0.2.0",
   "homepage": "https://github.com/uxebu/jasmine-matchers/",
-  "main": "src/matchers.js",
+  "main": "dist/jasmine-matchers.js",
   "maintainers" : [{
     "name": "David Aurelio",
     "email": "da@uxebu.com"

@@ -17,7 +17,7 @@ and more.
 Either you use in your browser jasmine test runner by adding it after the script-tag `jasmine.js`:
 
 ~~~html
-<script src="matchers.js"></script>
+<script src="dist/jasmine-matchers.js"></script>
 ~~~
 
 Or when using [jasmine-node](https://github.com/mhevery/jasmine-node) you can simply install the matchers via:
@@ -33,7 +33,7 @@ require('jasmine-matchers');
 describe(...);
 
 // or via requirejs (assuming your specs are within PROJECT_ROOT/test):
-require(['../node_modules/src/matchers.js'], function() {
+require(['../node_modules/dist/jasmine-matchers.js'], function() {
   describe(...);
 });
 ~~~
@@ -45,8 +45,10 @@ require(['../node_modules/src/matchers.js'], function() {
 npm install -g grunt-cli
 cd jasmine-matchers
 npm install
-# execute lint & test
-grunt test # or npm test
+# execute lint & tests (node)
+grunt # or npm test
+# execute tests (node)
+grunt test
 # execute lint
 grunt jshint
 # execute tests in phantomjs
@@ -55,6 +57,8 @@ grunt test-phantom
 grunt release
 # start a server
 grunt server # visit http://localhost:8231/_spec_runner.html
+# watch for changes
+grunt watch # re-executes "grunt" after src- or test-files were changed
 ~~~
 
 # History
