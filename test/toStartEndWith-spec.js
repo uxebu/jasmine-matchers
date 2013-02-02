@@ -20,6 +20,15 @@ require([], function() {
       });
     });
 
+    describe('with array', function() {
+      describe('matches', function() {
+        it('should work with "1"', function() {
+          expect(['1', '2'])
+            .toStartWith('1');
+        });
+      });
+    });
+
   });
 
   describe('toEachEndWith', function() {

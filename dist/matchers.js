@@ -156,12 +156,24 @@ beforeEach(function() {
   });
 });
 
+function isArray(value) {
+  return toString.call(value) == '[object Array]';
+}
+
 function endsWith(haystack, needle) {
   return haystack.substr(-needle.length) == needle;
 }
 
 function startsWith(haystack, needle) {
-  return haystack.substr(0, needle.length) == needle;
+  if (isArray(haystack)) {
+    var needleAsArray = needle;
+    if (!isArray(needle)) {
+      needleAsArray = [needle];
+    }
+    return haystack.indexOf(needleAsArray) == 0;
+  } else {
+    return haystack.substr(0, needle.length) == needle;
+  }
 }
 
 function stringifyFunctionName(func) {
