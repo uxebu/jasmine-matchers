@@ -10,7 +10,11 @@
   <script type="text/javascript" src="../node_modules/requirejs/require.js"></script>
   <script type="text/javascript">
   require([
-    './matchers-spec'
+    './toBe-spec',
+    './toHave-spec',
+    './toStartEndWith-spec',
+    './toContain-spec',
+    './toThrow-spec',
   ], function() {
     require(['./runner'])
   });
