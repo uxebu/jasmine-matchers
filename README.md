@@ -17,7 +17,12 @@ and more.
 Either you use in your browser jasmine test runner by adding it after the script-tag `jasmine.js`:
 
 ~~~html
-<script src="matchers.js"></script>
+// Since v0.2.0 you have to include every matcher on demand
+<script src="jasmine-matchers/src/toBe.js"></script>
+<script src="jasmine-matchers/src/toHave.js"></script>
+<script src="jasmine-matchers/src/toContain.js"></script>
+<script src="jasmine-matchers/src/toThrow.js"></script>
+<script src="jasmine-matchers/src/toStartEndWith.js"></script>
 ~~~
 
 Or when using [jasmine-node](https://github.com/mhevery/jasmine-node) you can simply install the matchers via:
@@ -33,7 +38,13 @@ require('jasmine-matchers');
 describe(...);
 
 // or via requirejs (assuming your specs are within PROJECT_ROOT/test):
-require(['../node_modules/src/matchers.js'], function() {
+require([
+  '../node_modules/jasmein-matchers/src/toBe.js',
+  '../node_modules/jasmein-matchers/src/toHave.js',
+  '../node_modules/jasmein-matchers/src/toContain.js',
+  '../node_modules/jasmein-matchers/src/toThrow.js',
+  '../node_modules/jasmein-matchers/src/toStartEndWith.js',
+], function() {
   describe(...);
 });
 ~~~
@@ -43,7 +54,10 @@ require(['../node_modules/src/matchers.js'], function() {
 This used to be our (uxebu's) collection of matchers that moved from project
 to project, got extended here and there, let's share it.
 
-TODO
-- write grunt file to
-  - integrate with travis
-  - build one file, for easier inclusion
+# Build
+
+Use `make build` to create one file, that lands in `dist/matchers.js`
+that you can include, if you don't like to handle multiple files.
+
+# TODO
+- integrate with travis

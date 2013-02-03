@@ -3,4 +3,4 @@ DIST_DIR=${WORKSPACE}/dist
 
 build:
 	mkdir -p ${DIST_DIR}
-	find ${WORKSPACE}/src -name *.js | xargs cat > ${DIST_DIR}/matchers.js
+	cat ${WORKSPACE}/LICENSE.txt `find ${WORKSPACE}/src -name *.js  ! -name matchers.js` > ${DIST_DIR}/matchers.js
