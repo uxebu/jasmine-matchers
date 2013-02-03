@@ -1,6 +1,7 @@
 v0.2.0
 -------------------
 * removed built version from the repo, use `make build` to build all matchers into one file
+* in the browser the matchers need to be loaded each individually, the matchers.js will warn you
 
 v0.1.2
 -------------------
