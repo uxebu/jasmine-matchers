@@ -6,7 +6,7 @@ var matcherFiles = [
   'toThrow.js'
 ];
 
-var i, l, scripts = '';
+var i, l;
 
 if (typeof process !== 'undefined' && typeof process.nextTick !== 'undefined') {
   // node.js
@@ -15,5 +15,5 @@ if (typeof process !== 'undefined' && typeof process.nextTick !== 'undefined') {
   }
 } else {
   // fallback
-  console.log('[jasmine-matchers] You have to import each matcher-file separately: ' + matcherFiles.join(', '));
+  console.log('[jasmine-matchers] Since v0.2.0 please import each matcher-file separately: ' + matcherFiles.join(', '));
 }
