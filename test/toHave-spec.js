@@ -51,4 +51,34 @@ require([], function() {
 
   });
 
+  describe('toExactlyHaveProperties', function() {
+
+    describe('matches', function() {
+      it('should work for `{x:0, y:undefined}`', function() {
+        var obj = {x:0, y:undefined};
+        expect(obj)
+          .toExactlyHaveProperties('x', 'y');
+      });
+      it('should work in any order', function() {
+        var obj = {x:0, y:undefined};
+        expect(obj)
+          .toExactlyHaveProperties('y', 'x');
+      });
+    });
+
+    describe('non-matches', function() {
+      it('should work for too many properties', function() {
+        var obj = {x:0, y:undefined};
+        expect(obj)
+          .not.toExactlyHaveProperties('x');
+      });
+      it('should work for missing properties', function() {
+        var obj = {x:0, y:undefined};
+        expect(obj)
+          .not.toExactlyHaveProperties('x', 'y', 'z');
+      });
+    });
+
+  });
+
 });

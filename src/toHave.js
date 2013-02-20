@@ -32,6 +32,15 @@ beforeEach(function() {
         }
       }
       return true;
+    },
+
+    toExactlyHaveProperties: function(name0, name1, name2) {
+      var actualKeys = Object.keys(this.actual);
+      var expectedKeys = [];
+      for (var i = 0, len = arguments.length; i < len; i += 1) {
+        expectedKeys.push(arguments[i]);
+      }
+      return ''+(actualKeys.sort()) == ''+(expectedKeys.sort())
     }
 
   });
