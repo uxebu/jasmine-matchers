@@ -17,6 +17,17 @@ require([], function() {
         var obj = {x:0, y:undefined};
         expect(obj).toHaveProperties('x', 'y');
       });
+
+      it('should work with a reference object', function() {
+        function C() { this.x = 0; }
+        C.prototype.y = 'arbitrary';
+
+        expect(new C).toHaveProperties({
+          x: 0,
+          y: 'arbitrary',
+          constructor: C
+        });
+      });
     });
 
   });
@@ -27,6 +38,16 @@ require([], function() {
       it('should work for `{x:0, y:undefined}`', function() {
         var obj = {x:0, y:undefined};
         expect(obj).toHaveOwnProperties('x', 'y');
+      });
+
+      it('should work with a reference object', function() {
+        expect({
+          x: 0,
+          y: 'arbitrary'
+        }).toHaveOwnProperties({
+          x: 0,
+          y: 'arbitrary'
+        });
       });
     });
 

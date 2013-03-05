@@ -1,47 +1,72 @@
-beforeEach(function() {
-  this.addMatchers({
-
-    toHaveBeenCalledXTimes: function(count) {
-      var callCount = this.actual.callCount;
-      var not = this.isNot ? "NOT " : "";
-      this.message = function() {
-        return 'Expected spy "' + this.actual.identity + '" ' + not + ' to have been called ' + count + ' times, but was ' + callCount + '.';
-      };
-      return callCount == count;
-    },
-
-    toHaveLength: function(length) {
-      return this.actual.length === length;
-    },
-
-    toHaveOwnProperties: function(name0, name1, name2) {
-      var actual = this.actual, hasOwnProperty = {}.hasOwnProperty;
-      for (var i = 0, len = arguments.length; i < len; i += 1) {
-        if (!hasOwnProperty.call(actual, arguments[i])) {
-          return false;
-        }
+(function() {
+  function testKeyList(keys, object, testFn) {
+    for (var i = 0, len = keys.length; i < len; i += 1) {
+      if (!testFn(object, keys[i])) {
+        return false;
       }
-      return true;
-    },
-
-    toHaveProperties: function(name0, name1, name2) {
-      var actual = this.actual;
-      for (var i = 0, len = arguments.length; i < len; i += 1) {
-        if (!(arguments[i] in actual)) {
-          return false;
-        }
-      }
-      return true;
-    },
-
-    toExactlyHaveProperties: function(name0, name1, name2) {
-      var actualKeys = Object.keys(this.actual);
-      var expectedKeys = [];
-      for (var i = 0, len = arguments.length; i < len; i += 1) {
-        expectedKeys.push(arguments[i]);
-      }
-      return ''+(actualKeys.sort()) == ''+(expectedKeys.sort())
     }
+    return true;
+  }
 
+  function testKeyObject(referenceObject, object, testFn) {
+    for (var key in referenceObject) {
+      if (!testFn(object, key, referenceObject[key])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function hasProperty(object, key) {
+    return key in object;
+  }
+  function hasOwnProperty(object, key) {
+    return {}.hasOwnProperty.call(object, key);
+  }
+  function hasPropertyWithValue(object, key, value) {
+    return object[key] === value;
+  }
+  function hasOwnPropertyWithValue(object, key, value) {
+    return hasOwnProperty(object, key) && hasPropertyWithValue(object, key, value);
+  }
+
+  beforeEach(function() {
+    this.addMatchers({
+
+      toHaveBeenCalledXTimes: function(count) {
+        var callCount = this.actual.callCount;
+        var not = this.isNot ? "NOT " : "";
+        this.message = function() {
+          return 'Expected spy "' + this.actual.identity + '" ' + not + ' to have been called ' + count + ' times, but was ' + callCount + '.';
+        };
+        return callCount == count;
+      },
+
+      toHaveLength: function(length) {
+        return this.actual.length === length;
+      },
+
+      toHaveOwnProperties: function(name0, name1, name2) {
+        return typeof name0 === 'object' ?
+          testKeyObject(name0, this.actual, hasOwnPropertyWithValue) :
+          testKeyList(arguments, this.actual, hasOwnProperty);
+      },
+
+      toHaveProperties: function(name0, name1, name2) {
+        return typeof name0 === 'object' ?
+          testKeyObject(name0, this.actual, hasPropertyWithValue) :
+          testKeyList(arguments, this.actual, hasProperty);
+      },
+
+      toExactlyHaveProperties: function(name0, name1, name2) {
+        var actualKeys = Object.keys(this.actual);
+        var expectedKeys = [];
+        for (var i = 0, len = arguments.length; i < len; i += 1) {
+          expectedKeys.push(arguments[i]);
+        }
+        return ''+(actualKeys.sort()) == ''+(expectedKeys.sort())
+      }
+
+    });
   });
-});
+}());
