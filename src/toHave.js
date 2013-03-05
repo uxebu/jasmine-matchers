@@ -59,12 +59,12 @@
       },
 
       toExactlyHaveProperties: function(name0, name1, name2) {
-        var actualKeys = Object.keys(this.actual);
-        var expectedKeys = [];
-        for (var i = 0, len = arguments.length; i < len; i += 1) {
-          expectedKeys.push(arguments[i]);
+        var actual = this.actual;
+        var numArguments = arguments.length;
+        for (var i = 0; i < numArguments; i += 1) {
+          if (!hasOwnProperty(actual, arguments[i])) { return false; }
         }
-        return ''+(actualKeys.sort()) == ''+(expectedKeys.sort())
+        return Object.keys(actual).length === numArguments;
       }
 
     });
