@@ -1,6 +1,7 @@
 v0.2.1
 -------------------
 * added toExactlyHaveProperties
+* added toHave[Own]PropertiesWithValues
 
 v0.2.0
 -------------------

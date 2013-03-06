@@ -4,7 +4,7 @@ require([], function() {
 
     describe('matches', function() {
       it('should work for `{length:null}`', function() {
-        expect({length:null}).toHaveLength(null);
+        expect({length: null}).toHaveLength(null);
       });
     });
 
@@ -14,15 +14,21 @@ require([], function() {
 
     describe('matches', function() {
       it('should work for `{x:0, y:undefined}`', function() {
-        var obj = {x:0, y:undefined};
+        var obj = {x: 0, y: undefined};
         expect(obj).toHaveProperties('x', 'y');
       });
+    });
+  });
 
+  describe('toHavePropertiesWithValues', function() {
+
+    describe('matches', function() {
       it('should work with a reference object', function() {
         function C() { this.x = 0; }
+
         C.prototype.y = 'arbitrary';
 
-        expect(new C).toHaveProperties({
+        expect(new C).toHavePropertiesWithValues({
           x: 0,
           y: 'arbitrary',
           constructor: C
@@ -36,18 +42,23 @@ require([], function() {
 
     describe('matches', function() {
       it('should work for `{x:0, y:undefined}`', function() {
-        var obj = {x:0, y:undefined};
+        var obj = {x: 0, y: undefined};
         expect(obj).toHaveOwnProperties('x', 'y');
       });
+    });
+  });
 
+  describe('toHaveOwnPropertiesWithValues', function() {
+
+    describe('matches', function() {
       it('should work with a reference object', function() {
         expect({
           x: 0,
           y: 'arbitrary'
-        }).toHaveOwnProperties({
-          x: 0,
-          y: 'arbitrary'
-        });
+        }).toHaveOwnPropertiesWithValues({
+            x: 0,
+            y: 'arbitrary'
+          });
       });
     });
 
@@ -76,12 +87,12 @@ require([], function() {
 
     describe('matches', function() {
       it('should work for `{x:0, y:undefined}`', function() {
-        var obj = {x:0, y:undefined};
+        var obj = {x: 0, y: undefined};
         expect(obj)
           .toExactlyHaveProperties('x', 'y');
       });
       it('should work in any order', function() {
-        var obj = {x:0, y:undefined};
+        var obj = {x: 0, y: undefined};
         expect(obj)
           .toExactlyHaveProperties('y', 'x');
       });
@@ -89,12 +100,12 @@ require([], function() {
 
     describe('non-matches', function() {
       it('should work for too many properties', function() {
-        var obj = {x:0, y:undefined};
+        var obj = {x: 0, y: undefined};
         expect(obj)
           .not.toExactlyHaveProperties('x');
       });
       it('should work for missing properties', function() {
-        var obj = {x:0, y:undefined};
+        var obj = {x: 0, y: undefined};
         expect(obj)
           .not.toExactlyHaveProperties('x', 'y', 'z');
       });

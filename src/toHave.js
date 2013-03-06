@@ -47,15 +47,19 @@
       },
 
       toHaveOwnProperties: function(name0, name1, name2) {
-        return typeof name0 === 'object' ?
-          testKeyObject(name0, this.actual, hasOwnPropertyWithValue) :
-          testKeyList(arguments, this.actual, hasOwnProperty);
+        return testKeyList(arguments, this.actual, hasOwnProperty);
+      },
+
+      toHaveOwnPropertiesWithValues: function(obj) {
+        return testKeyObject(obj, this.actual, hasOwnPropertyWithValue);
       },
 
       toHaveProperties: function(name0, name1, name2) {
-        return typeof name0 === 'object' ?
-          testKeyObject(name0, this.actual, hasPropertyWithValue) :
-          testKeyList(arguments, this.actual, hasProperty);
+        return testKeyList(arguments, this.actual, hasProperty);
+      },
+
+      toHavePropertiesWithValues: function(obj) {
+        return testKeyObject(obj, this.actual, hasPropertyWithValue);
       },
 
       toExactlyHaveProperties: function(name0, name1, name2) {
