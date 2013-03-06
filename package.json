@@ -3,7 +3,7 @@
   "name": "jasmine-matchers",
   "description": "Extends the matchers jasmine provides.",
   "private": false,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/uxebu/jasmine-matchers/",
   "main": "src/matchers.js",
   "maintainers" : [{
