@@ -48,6 +48,17 @@ require([], function() {
       });
     });
 
+    describe('non-matches', function() {
+      it('should not fail with undefined', function() {
+        expect(undefined)
+          .not.toHavePropertiesWithValues({obj: {x: 1, y: 2}});
+      });
+      it('should work in nested objects', function() {
+        expect({tagCount :{DefineButton: 2}})
+          .not.toHavePropertiesWithValues({tagCount :{DefineButton: 1}});
+      });
+    });
+
   });
 
   describe('toHaveOwnProperties', function() {
