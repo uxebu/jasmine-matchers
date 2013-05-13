@@ -39,11 +39,11 @@ describe(...);
 
 // or via requirejs (assuming your specs are within PROJECT_ROOT/test):
 require([
-  '../node_modules/jasmein-matchers/src/toBe.js',
-  '../node_modules/jasmein-matchers/src/toHave.js',
-  '../node_modules/jasmein-matchers/src/toContain.js',
-  '../node_modules/jasmein-matchers/src/toThrow.js',
-  '../node_modules/jasmein-matchers/src/toStartEndWith.js',
+  '../node_modules/jasmine-matchers/src/toBe.js',
+  '../node_modules/jasmine-matchers/src/toHave.js',
+  '../node_modules/jasmine-matchers/src/toContain.js',
+  '../node_modules/jasmine-matchers/src/toThrow.js',
+  '../node_modules/jasmine-matchers/src/toStartEndWith.js',
 ], function() {
   describe(...);
 });
