@@ -10,8 +10,16 @@
 
   function testKeyObject(referenceObject, object, testFn) {
     for (var key in referenceObject) {
-      if (!testFn(object, key, referenceObject[key])) {
-        return false;
+      if (typeof object[key] == 'object') {
+        for (var k in object[key]) {
+          if (!testKeyObject(referenceObject[k], object[key], testFn)) {
+            return false;
+          }
+        }
+      } else {
+        if (!testFn(object, key, referenceObject[key])) {
+          return false;
+        }
       }
     }
     return true;
@@ -24,7 +32,7 @@
     return {}.hasOwnProperty.call(object, key);
   }
   function hasPropertyWithValue(object, key, value) {
-    return object[key] === value;
+    return JSON.stringify(object[key]) === JSON.stringify(value);
   }
   function hasOwnPropertyWithValue(object, key, value) {
     return hasOwnProperty(object, key) && hasPropertyWithValue(object, key, value);
@@ -59,7 +67,17 @@
       },
 
       toHavePropertiesWithValues: function(obj) {
-        return testKeyObject(obj, this.actual, hasPropertyWithValue);
+        var hasProps = testKeyObject(obj, this.actual, hasPropertyWithValue);
+        var not = this.isNot ? "NOT " : "";
+        this.message = function() {
+          // Show only the values we compare, which are all keys given in obj.
+          var keys = Object.keys(obj);
+          var allActuals = this.actual;
+          var actual = {};
+          keys.forEach(function(key) { actual[key] = allActuals[key] });
+          return 'Expected properties with values ' + JSON.stringify(actual) + not + ' to be ' + JSON.stringify(obj) + '.';
+        };
+        return hasProps;
       },
 
       toExactlyHaveProperties: function(name0, name1, name2) {

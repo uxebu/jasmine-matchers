@@ -34,6 +34,18 @@ require([], function() {
           constructor: C
         });
       });
+      it('should work with nested objects', function() {
+        expect({obj: {x: 1, y: 2}})
+          .toHavePropertiesWithValues({obj: {x: 1, y: 2}});
+      });
+      it('should work with nested objects, also when the keys are not in the same order', function() {
+        expect({obj: {x: 1, y: 2}})
+          .toHavePropertiesWithValues({obj: {y: 2, x: 1}});
+      });
+      it('should work with nested objects of depth>2, and different key order', function() {
+        expect({obj: {x: 1, y: 2, subObj: {subsub: {a: 9, b: 10}}}})
+          .toHavePropertiesWithValues({obj: {x: 1, subObj: {subsub: {b: 10, a: 9}}, y: 2}});
+      });
     });
 
   });
