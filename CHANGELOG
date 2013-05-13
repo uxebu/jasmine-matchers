@@ -1,3 +1,8 @@
+v0.2.2 / 2013-05-13
+-------------------
+
+* make toHavePropertiesWithValues work with nested objects
+
 v0.2.1
 -------------------
 * added toExactlyHaveProperties
