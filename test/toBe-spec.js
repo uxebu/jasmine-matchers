@@ -198,4 +198,23 @@ require([], function() {
 
   });
 
+  describe('toBeEmpty', function(){
+    describe('matches', function(){
+      it('should pass for ""', function(){
+        expect("").toBeEmpty();
+      });
+      it('should pass for []', function(){
+        expect([]).toBeEmpty();
+      });
+    });
+    describe('non-matches', function(){
+      it('should say NOT empty for "abc"', function(){
+        expect('abc').not.toBeEmpty();
+      });
+      it('should say NOT empty for [1,2,3]', function(){
+        expect([1,2,3]).not.toBeEmpty();
+      });
+    });
+  });
+
 });

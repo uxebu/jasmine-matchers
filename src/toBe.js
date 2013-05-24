@@ -43,6 +43,10 @@ beforeEach(function() {
 
     toBeOneOf: function(values) {
       return values.indexOf(this.actual) > -1;
+    },
+
+    toBeEmpty: function() {
+      return this.actual.length === 0;
     }
 
   });
@@ -62,12 +66,11 @@ beforeEach(function() {
     return characters.map(addSpaceBeforeUpperCaseLetter).join('').toLowerCase();
   }
 
-  function addSpaceBeforeUpperCaseLetter(character){
+  function addSpaceBeforeUpperCaseLetter(character) {
     if (character.toLowerCase() != character) {
       character = ' ' + character;
     }
     return character;
   }
-
 
 });
