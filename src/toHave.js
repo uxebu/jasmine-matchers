@@ -78,7 +78,9 @@
           var keys = Object.keys(obj);
           var allActuals = this.actual;
           var actual = {};
-          keys.forEach(function(key) { actual[key] = (allActuals && allActuals[key]) || undefined });
+          keys.forEach(function(key) {
+            actual[key] = typeof allActuals != 'undefined' ? allActuals[key] : undefined
+          });
           return 'Expected properties with values ' + JSON.stringify(actual) + not + ' to be ' + JSON.stringify(obj) + '.';
         };
         return hasProps;

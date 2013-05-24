@@ -66,8 +66,12 @@ require([], function() {
           .not.toHavePropertiesWithValues({obj: {x: 1, y: 2}});
       });
       it('should work in nested objects', function() {
-        expect({tagCount :{DefineButton: 2}})
-          .not.toHavePropertiesWithValues({tagCount :{DefineButton: 1}});
+        expect({tagCount: {DefineButton: 2}})
+          .not.toHavePropertiesWithValues({tagCount: {DefineButton: 1}});
+      });
+      it('should work when all actual values` values are 0', function() {
+        expect({audio: 0, video: 0, image: 0, font: 0})
+          .not.toHavePropertiesWithValues({audio: 1, video: 0, image: 3, font: 1});
       });
     });
 
