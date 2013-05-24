@@ -13,9 +13,21 @@ require([], function() {
   describe('toHaveProperties', function() {
 
     describe('matches', function() {
+      it('should work with one property', function() {
+        var obj = {x: 0, y: undefined};
+        expect(obj).toHaveProperties('x');
+      });
+      it('should work with one property as array', function() {
+        var obj = {x: 0, y: undefined};
+        expect(obj).toHaveProperties(['x']);
+      });
       it('should work for `{x:0, y:undefined}`', function() {
         var obj = {x: 0, y: undefined};
         expect(obj).toHaveProperties('x', 'y');
+      });
+      it('should work with an array too', function() {
+        var obj = {x: 0, y: undefined};
+        expect(obj).toHaveProperties(['x', 'y']);
       });
     });
   });
@@ -64,9 +76,21 @@ require([], function() {
   describe('toHaveOwnProperties', function() {
 
     describe('matches', function() {
+      it('should work with one property', function() {
+        var obj = {x: 0, y: undefined};
+        expect(obj).toHaveOwnProperties('x');
+      });
+      it('should work with one property as array', function() {
+        var obj = {x: 0, y: undefined};
+        expect(obj).toHaveOwnProperties(['x']);
+      });
       it('should work for `{x:0, y:undefined}`', function() {
         var obj = {x: 0, y: undefined};
         expect(obj).toHaveOwnProperties('x', 'y');
+      });
+      it('should work with an array', function() {
+        var obj = {x: 0, y: undefined};
+        expect(obj).toHaveOwnProperties(['x', 'y']);
       });
     });
   });

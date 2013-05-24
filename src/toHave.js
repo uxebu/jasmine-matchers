@@ -57,7 +57,8 @@
       },
 
       toHaveOwnProperties: function(name0, name1, name2) {
-        return testKeyList(arguments, this.actual, hasOwnProperty);
+        var array = Array.isArray(name0) ? name0 : arguments;
+        return testKeyList(array, this.actual, hasOwnProperty);
       },
 
       toHaveOwnPropertiesWithValues: function(obj) {
@@ -65,7 +66,8 @@
       },
 
       toHaveProperties: function(name0, name1, name2) {
-        return testKeyList(arguments, this.actual, hasProperty);
+        var array = Array.isArray(name0) ? name0 : arguments;
+        return testKeyList(array, this.actual, hasProperty);
       },
 
       toHavePropertiesWithValues: function(obj) {
