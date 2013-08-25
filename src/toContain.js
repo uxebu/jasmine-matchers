@@ -13,9 +13,13 @@ beforeEach(function() {
 
     toContainEach: function(shouldContain) {
       var actual = this.actual;
+      var actualJsoned = [];
+      for (var i= 0, l=actual.length; i<l; i++) {
+        actualJsoned.push(JSON.stringify(actual[i]));
+      }
       var didNotContain = [];
       for (var i=0, l=shouldContain.length; i<l; i++) {
-        if (actual.indexOf(shouldContain[i]) == -1) {
+        if (actualJsoned.indexOf(JSON.stringify(shouldContain[i])) == -1) {
           didNotContain.push(shouldContain[i]);
         }
       }

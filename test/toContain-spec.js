@@ -39,6 +39,10 @@ require([], function() {
         expect(['a', 'b'])
           .toContainEach(['b', 'a']);
       });
+      it('should also work for nested arrays', function() {
+        expect([['one', 'a'], ['two', 'b']])
+          .toContainEach([['one', 'a']]);
+      });
     });
     describe('non-matches', function() {
       it('should NOT contain [c]', function() {
