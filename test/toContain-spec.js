@@ -29,4 +29,23 @@ require([], function() {
 
   });
 
+  describe('toContainEach', function() {
+    describe('matches', function() {
+      it('should contain [a]', function() {
+        expect(['a', 'b'])
+          .toContainEach(['a']);
+      });
+      it('should contain [a,b] any order', function() {
+        expect(['a', 'b'])
+          .toContainEach(['b', 'a']);
+      });
+    });
+    describe('non-matches', function() {
+      it('should NOT contain [c]', function() {
+        expect(['a', 'b'])
+          .not.toContainEach(['c']);
+      });
+    });
+  });
+
 });
