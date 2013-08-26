@@ -3,6 +3,7 @@ v0.2.3 / 2013-??-??
 
 * merged in toBeEmpty() pull request #1 from sideshowcoder
 * make toHave[Own]Properties accept one array as the first parameter too
+* added toContainEach, which allows to compare arrays no matter of their elements order
 
 v0.2.2 / 2013-05-13
 -------------------
