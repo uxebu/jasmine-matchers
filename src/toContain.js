@@ -13,15 +13,11 @@ beforeEach(function() {
 
     toContainEach: function(shouldContain) {
       var actual = this.actual;
-      var actualJsoned = [];
-      for (var i= 0, l=actual.length; i<l; i++) {
-        actualJsoned.push(JSON.stringify(actual[i]));
-      }
       var didNotContain = [];
-      for (var i=0, l=shouldContain.length; i<l; i++) {
-        if (actualJsoned.indexOf(JSON.stringify(shouldContain[i])) == -1) {
-          didNotContain.push(shouldContain[i]);
-        }
+      if (typeof actual == 'string') {
+        didNotContain = getNotContainedInString(actual, shouldContain)
+      } else {
+        didNotContain = getNotContainedInArray(actual, shouldContain)
       }
 
       var not = this.isNot ? " NOT" : "";
@@ -32,4 +28,29 @@ beforeEach(function() {
     }
 
   });
+
+  function getNotContainedInString(str, searches) {
+    var didNotContain = [];
+    for (var i=0, l=searches.length; i<l; i++) {
+      if (str.indexOf(searches[i]) == -1) {
+        didNotContain.push(searches[i]);
+      }
+    }
+    return didNotContain;
+  }
+
+  function getNotContainedInArray(arr, searches) {
+    var actualJsoned = [];
+    for (var i= 0, l=arr.length; i<l; i++) {
+      actualJsoned.push(JSON.stringify(arr[i]));
+    }
+    var didNotContain = [];
+    for (var i=0, l=searches.length; i<l; i++) {
+      if (actualJsoned.indexOf(JSON.stringify(searches[i])) == -1) {
+        didNotContain.push(searches[i]);
+      }
+    }
+    return didNotContain;
+  }
+
 });

@@ -43,10 +43,29 @@ require([], function() {
         expect([['one', 'a'], ['two', 'b']])
           .toContainEach([['one', 'a']]);
       });
+
+      describe('for actual being a string', function() {
+        it('simple one letter search', function() {
+          expect('There is a and b in here')
+            .toContainEach(['a', 'b']);
+        });
+        it('multi letter string', function() {
+          expect('There is a and b in here')
+            .toContainEach(['a and b']);
+        });
+        it('multi letter string 1', function() {
+          expect('There is /a/path and {something: like an object} in here')
+            .toContainEach(['/a/path', '{something: like an object}']);
+        });
+      });
     });
     describe('non-matches', function() {
       it('should NOT contain [c]', function() {
         expect(['a', 'b'])
+          .not.toContainEach(['c']);
+      });
+      it('should also work when actual is a string', function() {
+        expect('There is a and b in here')
           .not.toContainEach(['c']);
       });
     });
