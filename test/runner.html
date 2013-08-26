@@ -9,17 +9,20 @@
   <script type="text/javascript" src="../node_modules/jasmine-node/node_modules/jasmine-reporters/ext/jasmine-html.js"></script>
   <script type="text/javascript" src="../node_modules/requirejs/require.js"></script>
   <script type="text/javascript">
-  require([
-    './allMatchers',
+    require.config({
+      urlArgs: +new Date
+    });
+    require([
+      './allMatchers',
 
-    './toBe-spec',
-    './toHave-spec',
-    './toStartEndWith-spec',
-    './toContain-spec',
-    './toThrow-spec',
-  ], function() {
-    require(['./runner'])
-  });
+      './toBe-spec',
+      './toHave-spec',
+      './toStartEndWith-spec',
+      './toContain-spec',
+      './toThrow-spec',
+    ], function() {
+      require(['./runner'])
+    });
   </script>
 </head>
 
