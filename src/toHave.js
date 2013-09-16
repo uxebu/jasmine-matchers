@@ -53,6 +53,11 @@
       },
 
       toHaveLength: function(length) {
+        var not = this.isNot ? " NOT" : "";
+        this.message = function() {
+          return 'Expected ' + JSON.stringify(this.actual) + not + ' to have length ' + length + ' but was ' + this.actual.length;
+        };
+
         return this.actual.length === length;
       },
 
