@@ -87,7 +87,7 @@ require([], function() {
       });
       it('should bail if contained too often', function() {
         expect('one two two three')
-          .toContainEachOnce(['one', 'two', 'three']);
+          .not.toContainEachOnce(['one', 'two', 'three']);
       });
     });
 
