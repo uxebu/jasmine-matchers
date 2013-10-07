@@ -2,13 +2,7 @@ beforeEach(function() {
   this.addMatchers({
 
     toContainOnce: function(value) {
-      var actual = this.actual;
-      var containsOnce = false;
-      if (actual) {
-        var firstFoundAt = actual.indexOf(value);
-        containsOnce = firstFoundAt!=-1 && firstFoundAt == actual.lastIndexOf(value);
-      }
-      return containsOnce;
+      return containsOnce(value, this.actual);
     },
 
     toContainEach: function(shouldContain) {
@@ -25,6 +19,31 @@ beforeEach(function() {
         return 'Expected ' + JSON.stringify(actual) + not + ' to contain `' + didNotContain + '` .';
       };
       return !didNotContain.length;
+    },
+
+    toContainEachOnce: function(shouldContainOnce) {
+      var actual = this.actual;
+      var didNotContain = [];
+      if (typeof actual == 'string') {
+        didNotContain = getNotContainedInString(actual, shouldContainOnce)
+      } else {
+        didNotContain = getNotContainedInArray(actual, shouldContainOnce)
+      }
+
+      var numValues = shouldContainOnce.length;
+      var containedMoreThanOnce = [];
+      for (var i = 0; i < numValues; i++) {
+        var value = shouldContainOnce[i];
+        if (!containsOnce(value, actual)) {
+          containedMoreThanOnce.push(value);
+        }
+      }
+
+      var not = this.isNot ? " NOT" : "";
+      this.message = function() {
+        return 'Expected ' + JSON.stringify(actual) + not + ' to contain once `' + didNotContain.concat(containedMoreThanOnce).join(', ') + '` .';
+      };
+      return !didNotContain.length && containedMoreThanOnce.length==0;
     }
 
   });
@@ -51,6 +70,14 @@ beforeEach(function() {
       }
     }
     return didNotContain;
+  }
+
+  function containsOnce(str, arr) {
+    if (!arr) {
+      return false;
+    }
+    var firstFoundAt = arr.indexOf(str);
+    return firstFoundAt!=-1 && firstFoundAt == arr.lastIndexOf(str);
   }
 
 });

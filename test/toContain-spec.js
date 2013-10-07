@@ -71,4 +71,26 @@ require([], function() {
     });
   });
 
+  describe('toContainEachOnce', function() {
+
+    describe('matches', function() {
+      it('should work for simple strings', function() {
+        expect('one two three')
+          .toContainEachOnce(['one', 'two', 'three']);
+      });
+    });
+
+    describe('non-matches', function() {
+      it('should work for simple strings', function() {
+        expect('one two three')
+          .not.toContainEachOnce(['one', 'two', 'three', 'four']);
+      });
+      it('should bail if contained too often', function() {
+        expect('one two two three')
+          .toContainEachOnce(['one', 'two', 'three']);
+      });
+    });
+
+  });
+
 });
