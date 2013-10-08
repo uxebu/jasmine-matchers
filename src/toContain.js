@@ -34,7 +34,7 @@ beforeEach(function() {
       var containedMoreThanOnce = [];
       for (var i = 0; i < numValues; i++) {
         var value = shouldContainOnce[i];
-        if (!containsOnce(value, actual)) {
+        if (!containsOnce(value, actual) && didNotContain.indexOf(value) == -1) {
           containedMoreThanOnce.push(value);
         }
       }
