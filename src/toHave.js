@@ -62,16 +62,18 @@
 
       toHaveEnumerableProperties: function(properties) {
         var propsToFind = cloneArray(properties);
+        var propsFound = [];
         for (var propName in this.actual) {
           var propFoundAt = propsToFind.indexOf(propName);
           if (propFoundAt > -1) {
+            propsFound.push(propName);
             propsToFind = removeElementFromArray(propsToFind, propFoundAt);
           }
         }
 
         var not = this.isNot ? "NOT " : "";
         this.message = function() {
-          return 'Expected object "' + this.actual + '" ' + not + ' to have enumerable properties "' + propsToFind.join(', ') + '".';
+          return 'Expected object "' + this.actual + '" ' + not + ' to have enumerable properties "' + (not?propsFound:propsToFind).join(', ') + '".';
         };
 
         return propsToFind.length == 0;
