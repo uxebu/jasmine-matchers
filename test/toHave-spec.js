@@ -164,4 +164,15 @@ require([], function() {
 
   });
 
+  describe('toHaveEnumerableProperties', function() {
+    describe('matches', function() {
+
+      it('should find `defineProperty` on Object', function() {
+        expect(Object)
+          .toHaveEnumerableProperties(['defineProperty']);
+      });
+
+    });
+  });
+
 });

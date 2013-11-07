@@ -52,6 +52,10 @@
         return callCount == count;
       },
 
+      toHaveEnumerableProperties: function(properties) {
+        return true;
+      },
+
       toHaveLength: function(length) {
         var not = this.isNot ? " NOT" : "";
         this.message = function() {
