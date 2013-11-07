@@ -179,12 +179,6 @@ require([], function() {
           .toHaveEnumerableProperties(['x', 'y']);
       });
 
-      it('should find one but not the other', function() {
-        var obj = {z: 2};
-        expect(obj)
-          .toHaveEnumerableProperties(['x', 'z']);
-      });
-
     });
 
     describe('non-matches', function() {
@@ -201,7 +195,7 @@ require([], function() {
           .not.toHaveEnumerableProperties(['x', 'y']);
       });
 
-      it('should NOT find one but the other', function() {
+      it('should find one but NOT the other', function() {
         var obj = {z: 2};
         expect(obj)
           .not.toHaveEnumerableProperties(['x', 'z']);
