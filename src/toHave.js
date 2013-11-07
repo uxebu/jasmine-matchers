@@ -40,6 +40,14 @@
     return hasOwnProperty(object, key) && hasPropertyWithValue(object, key, value);
   }
 
+  function cloneArray(arr) {
+    return Array.prototype.slice.call(arr, 0);
+  }
+
+  function removeElementFromArray(arr, index) {
+    return arr.slice(0, index).concat(arr.slice(index + 1))
+  }
+
   beforeEach(function() {
     this.addMatchers({
 
@@ -53,7 +61,20 @@
       },
 
       toHaveEnumerableProperties: function(properties) {
-        return true;
+        var propsToFind = cloneArray(properties);
+        for (var propName in this.actual) {
+          var propFoundAt = propsToFind.indexOf(propName);
+          if (propFoundAt > -1) {
+            propsToFind = removeElementFromArray(propsToFind, propFoundAt);
+          }
+        }
+
+        var not = this.isNot ? "NOT " : "";
+        this.message = function() {
+          return 'Expected object "' + this.actual + '" ' + not + ' to have enumerable properties "' + propsToFind.join(', ') + '".';
+        };
+
+        return propsToFind.length == 0;
       },
 
       toHaveLength: function(length) {

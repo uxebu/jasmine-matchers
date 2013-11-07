@@ -173,6 +173,40 @@ require([], function() {
           .toHaveEnumerableProperties(['x']);
       });
 
+      it('should find `x` and `y` on obj', function() {
+        var obj = {x: 1, y: 2};
+        expect(obj)
+          .toHaveEnumerableProperties(['x', 'y']);
+      });
+
+      it('should find one but not the other', function() {
+        var obj = {z: 2};
+        expect(obj)
+          .toHaveEnumerableProperties(['x', 'z']);
+      });
+
+    });
+
+    describe('non-matches', function() {
+
+      it('should NOT find `y` on obj', function() {
+        var obj = {x: 1};
+        expect(obj)
+          .not.toHaveEnumerableProperties(['y']);
+      });
+
+      it('should NOT find `x` and `y` on obj', function() {
+        var obj = {z: 2};
+        expect(obj)
+          .not.toHaveEnumerableProperties(['x', 'y']);
+      });
+
+      it('should NOT find one but the other', function() {
+        var obj = {z: 2};
+        expect(obj)
+          .not.toHaveEnumerableProperties(['x', 'z']);
+      });
+
     });
   });
 
